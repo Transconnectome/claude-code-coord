@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>/coord — Claude Code 복잡 작업 워크플로우 공개</title>
+</head>
+<body style="margin:0;padding:0;background-color:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+
+<!-- ===== WRAPPER ===== -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0d1117;">
+<tr><td align="center" style="padding:24px 16px;">
+
+<!-- ===== CONTENT TABLE (max 680px) ===== -->
+<table width="680" cellpadding="0" cellspacing="0" border="0" style="max-width:680px;width:100%;">
+
+<!-- ========================================== -->
+<!-- 1. HEADER BLOCK                            -->
+<!-- ========================================== -->
+<tr>
+  <td style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%);border-radius:16px 16px 0 0;padding:40px 36px 32px;text-align:center;">
+    <p style="margin:0 0 8px;font-size:14px;color:#e94560;letter-spacing:3px;text-transform:uppercase;font-weight:700;">🚀 TRANSCONNECTOME LAB · SNU CONNECTOME</p>
+    <h1 style="margin:0 0 12px;font-size:36px;font-weight:800;color:#ffffff;line-height:1.2;">
+      🧠 <code style="background:rgba(233,69,96,0.15);color:#e94560;padding:4px 10px;border-radius:6px;font-size:34px;">/coord</code> 공개
+    </h1>
+    <p style="margin:0 0 20px;font-size:18px;color:#8b949e;line-height:1.5;">
+      Claude Code 복잡 작업을 위한<br>
+      <strong style="color:#58a6ff;">6단계 지능형 워크플로우</strong>를 오픈소스로 공개합니다
+    </p>
+    <!-- RED DIVIDER LINE -->
+    <div style="height:3px;background:linear-gradient(90deg,transparent,#e94560,transparent);margin:0 auto;width:60%;border-radius:2px;"></div>
+  </td>
+</tr>
+
+<!-- SPACER -->
+<tr><td style="height:4px;background:#e94560;"></td></tr>
+
+<!-- ========================================== -->
+<!-- 2. WHAT IS /coord?                         -->
+<!-- ========================================== -->
+<tr>
+  <td style="background:#0f1923;padding:32px 36px;border-left:1px solid #21262d;border-right:1px solid #21262d;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td>
+          <h2 style="margin:0 0 16px;font-size:22px;color:#ffffff;font-weight:700;">
+            🤔 <span style="color:#e2c275;">/coord</span>가 뭔가요?
+          </h2>
+          <p style="margin:0 0 16px;font-size:15px;color:#c9d1d9;line-height:1.7;">
+            <code style="background:#1e2a3a;color:#58a6ff;padding:2px 8px;border-radius:4px;">/coord</code>는 Claude Code의 <strong style="color:#ffffff;">slash command + skill</strong>로, 복잡한 엔지니어링 작업을 <strong style="color:#3fb950;">6단계 파이프라인</strong>으로 자동 조율합니다.
+          </p>
+          <p style="margin:0 0 16px;font-size:15px;color:#c9d1d9;line-height:1.7;">
+            단순한 도구 모음이 아닙니다. <strong style="color:#e2c275;">메모리 검색 → 계획 수립 → 병렬 리서치 → 전문가 에이전트 위임 → 리뷰 → 메모리 업데이트</strong>까지, 복잡한 작업을 처음부터 끝까지 지능적으로 관리합니다.
+          </p>
+          <!-- USE CASE PILLS -->
+          <table width="100%" cellpadding="4" cellspacing="4" border="0">
+            <tr>
+              <td width="50%">
+                <div style="background:#1e2a3a;border:1px solid #e94560;border-radius:8px;padding:12px 16px;">
+                  <p style="margin:0;font-size:13px;font-weight:700;color:#e94560;">✅ 이럴 때 쓰세요</p>
+                  <ul style="margin:8px 0 0;padding-left:16px;font-size:13px;color:#c9d1d9;line-height:1.6;">
+                    <li>3단계 이상 복잡한 구현</li>
+                    <li>멀티 도메인 아키텍처 설계</li>
+                    <li>원인 불명 복합 버그</li>
+                    <li>대규모 리팩터링 계획</li>
+                  </ul>
+                </div>
+              </td>
+              <td width="50%">
+                <div style="background:#1e2a3a;border:1px solid #3fb950;border-radius:8px;padding:12px 16px;">
+                  <p style="margin:0;font-size:13px;font-weight:700;color:#3fb950;">⚡ 이런 효과가 있어요</p>
+                  <ul style="margin:8px 0 0;padding-left:16px;font-size:13px;color:#c9d1d9;line-height:1.6;">
+                    <li>병렬 에이전트로 시간 절약</li>
+                    <li>이전 세션 메모리 자동 참조</li>
+                    <li>아첨 방지 시스템 내장</li>
+                    <li>전문가 에이전트 자동 배치</li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+<!-- ========================================== -->
+<!-- 3. INFOGRAPHIC                             -->
+<!-- ========================================== -->
+<tr>
+  <td style="background:#0d1117;padding:24px 36px;border-left:1px solid #21262d;border-right:1px solid #21262d;">
+    <h2 style="margin:0 0 16px;font-size:20px;color:#ffffff;font-weight:700;text-align:center;">
+      📊 6단계 파이프라인 한눈에 보기
+    </h2>
+    <img src="https://raw.githubusercontent.com/Transconnectome/claude-code-coord/main/infographics/coord_system_overview.png"
+         alt="/coord 6-Stage Pipeline: Bootstrap → Memory → Plan → Research → Execute → Review → Memory Update"
+         width="100%"
+         style="display:block;border-radius:12px;border:1px solid #21262d;max-width:608px;" />
+  </td>
+</tr>
+
+<!-- ========================================== -->
+<!-- 4. 6-STAGE FLOW CARDS                      -->
+<!-- ========================================== -->
+<tr>
+  <td style="background:#0f1923;padding:28px 36px;border-left:1px solid #21262d;border-right:1px solid #21262d;">
+    <h2 style="margin:0 0 20px;font-size:20px;color:#ffffff;font-weight:700;">🔄 단계별 설명</h2>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+
+      <!-- Stage 0 + 1 row -->
+      <tr>
+        <td width="49%" style="vertical-align:top;padding-right:8px;padding-bottom:10px;">
+          <div style="background:#0d2136;border-left:4px solid #58a6ff;border-radius:0 8px 8px 0;padding:14px 16px;">
+            <p style="margin:0 0 4px;font-size:13px;font-weight:800;color:#58a6ff;">0⃣ BOOTSTRAP</p>
+            <p style="margin:0;font-size:13px;color:#c9d1d9;line-height:1.5;">작업 복잡도 측정 → sequential-thinking + graphiti-memory 자동 로드</p>
+          </div>
+        </td>
+        <td width="49%" style="vertical-align:top;padding-left:8px;padding-bottom:10px;">
+          <div style="background:#0d2136;border-left:4px solid #8b949e;border-radius:0 8px 8px 0;padding:14px 16px;">
+            <p style="margin:0 0 4px;font-size:13px;font-weight:800;color:#8b949e;">1⃣ MEMORY PRE-CHECK</p>
+            <p style="margin:0;font-size:13px;color:#c9d1d9;line-height:1.5;">Auto-memory ‖ Serena MCP ‖ Graphiti — 3소스 병렬 스캔</p>
+          </div>
+        </td>
+      </tr>
+
+      <!-- Stage 2 + 3 row -->
+      <tr>
+        <td width="49%" style="vertical-align:top;padding-right:8px;padding-bottom:10px;">
+          <div style="background:#0d2136;border-left:4px solid #e2c275;border-radius:0 8px 8px 0;padding:14px 16px;">
+            <p style="margin:0 0 4px;font-size:13px;font-weight:800;color:#e2c275;">2⃣ PLAN</p>
+            <p style="margin:0;font-size:13px;color:#c9d1d9;line-height:1.5;">sequential-thinking MCP → Plan agent → TodoWrite 목록 생성</p>
+          </div>
+        </td>
+        <td width="49%" style="vertical-align:top;padding-left:8px;padding-bottom:10px;">
+          <div style="background:#0d2136;border-left:4px solid #58a6ff;border-radius:0 8px 8px 0;padding:14px 16px;">
+            <p style="margin:0 0 4px;font-size:13px;font-weight:800;color:#58a6ff;">3⃣ RESEARCH</p>
+            <p style="margin:0;font-size:13px;color:#c9d1d9;line-height:1.5;">Explore ‖ deep-research-agent ‖ tavily/context7 병렬 실행</p>
+          </div>
+        </td>
+      </tr>
+
+      <!-- Stage 4 + 5 row -->
+      <tr>
+        <td width="49%" style="vertical-align:top;padding-right:8px;padding-bottom:10px;">
+          <div style="background:#0d2136;border-left:4px solid #3fb950;border-radius:0 8px 8px 0;padding:14px 16px;">
+            <p style="margin:0 0 4px;font-size:13px;font-weight:800;color:#3fb950;">4⃣ EXECUTE</p>
+            <p style="margin:0;font-size:13px;color:#c9d1d9;line-height:1.5;">도메인별 전문가 에이전트 병렬 배치 + 중간 lint/test 검증</p>
+          </div>
+        </td>
+        <td width="49%" style="vertical-align:top;padding-left:8px;padding-bottom:10px;">
+          <div style="background:#0d2136;border-left:4px solid #e94560;border-radius:0 8px 8px 0;padding:14px 16px;">
+            <p style="margin:0 0 4px;font-size:13px;font-weight:800;color:#e94560;">5⃣ REVIEW + 6⃣ MEMORY</p>
+            <p style="margin:0;font-size:13px;color:#c9d1d9;line-height:1.5;">critic agent 검토 → 학습 내용 Auto-memory &gt; Graphiti 저장</p>
+          </div>
+        </td>
+      </tr>
+
+    </table>
+  </td>
+</tr>
+
+<!-- ========================================== -->
+<!-- 5. MCP SERVERS GRID                        -->
+<!-- ========================================== -->
+<tr>
+  <td style="background:#0d1117;padding:28px 36px;border-left:1px solid #21262d;border-right:1px solid #21262d;">
+    <h2 style="margin:0 0 8px;font-size:20px;color:#ffffff;font-weight:700;">🛠️ 연동 MCP 서버 (9개)</h2>
+    <p style="margin:0 0 20px;font-size:14px;color:#8b949e;">각 MCP 서버는 단계별로 자동 선택됩니다</p>
+    <table width="100%" cellpadding="4" cellspacing="4" border="0">
+      <tr>
+        <td width="33%" style="vertical-align:top;">
+          <div style="background:#1e2a3a;border-radius:10px;padding:14px;text-align:center;border:1px solid #30363d;">
+            <p style="margin:0 0 4px;font-size:22px;">🔗</p>
+            <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#58a6ff;">sequential-thinking</p>
+            <p style="margin:0;font-size:12px;color:#8b949e;">다단계 추론 엔진</p>
+          </div>
+        </td>
+        <td width="33%" style="vertical-align:top;">
+          <div style="background:#1e2a3a;border-radius:10px;padding:14px;text-align:center;border:1px solid #30363d;">
+            <p style="margin:0 0 4px;font-size:22px;">🔍</p>
+            <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#e2c275;">tavily</p>
+            <p style="margin:0;font-size:12px;color:#8b949e;">실시간 웹 검색</p>
+          </div>
+        </td>
+        <td width="33%" style="vertical-align:top;">
+          <div style="background:#1e2a3a;border-radius:10px;padding:14px;text-align:center;border:1px solid #30363d;">
+            <p style="margin:0 0 4px;font-size:22px;">📚</p>
+            <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#3fb950;">context7</p>
+            <p style="margin:0;font-size:12px;color:#8b949e;">공식 문서 조회</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td width="33%" style="vertical-align:top;">
+          <div style="background:#1e2a3a;border-radius:10px;padding:14px;text-align:center;border:1px solid #30363d;">
+            <p style="margin:0 0 4px;font-size:22px;">🎨</p>
+            <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#a371f7;">magic (21st.dev)</p>
+            <p style="margin:0;font-size:12px;color:#8b949e;">UI 컴포넌트 생성</p>
+          </div>
+        </td>
+        <td width="33%" style="vertical-align:top;">
+          <div style="background:#1e2a3a;border-radius:10px;padding:14px;text-align:center;border:1px solid #30363d;">
+            <p style="margin:0 0 4px;font-size:22px;">✏️</p>
+            <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#58a6ff;">morphllm</p>
+            <p style="margin:0;font-size:12px;color:#8b949e;">대량 패턴 편집</p>
+          </div>
+        </td>
+        <td width="33%" style="vertical-align:top;">
+          <div style="background:#1e2a3a;border-radius:10px;padding:14px;text-align:center;border:1px solid #30363d;">
+            <p style="margin:0 0 4px;font-size:22px;">🧩</p>
+            <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#e2c275;">serena</p>
+            <p style="margin:0;font-size:12px;color:#8b949e;">코드 심볼 탐색</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td width="33%" style="vertical-align:top;">
+          <div style="background:#1e2a3a;border-radius:10px;padding:14px;text-align:center;border:1px solid #30363d;">
+            <p style="margin:0 0 4px;font-size:22px;">🌐</p>
+            <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#e94560;">playwright</p>
+            <p style="margin:0;font-size:12px;color:#8b949e;">브라우저 자동화</p>
+          </div>
+        </td>
+        <td width="33%" style="vertical-align:top;">
+          <div style="background:#1e2a3a;border-radius:10px;padding:14px;text-align:center;border:1px solid #30363d;">
+            <p style="margin:0 0 4px;font-size:22px;">🕸️</p>
+            <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#3fb950;">graphiti</p>
+            <p style="margin:0;font-size:12px;color:#8b949e;">지식 그래프 메모리</p>
+          </div>
+        </td>
+        <td width="33%" style="vertical-align:top;">
+          <div style="background:#1e2a3a;border-radius:10px;padding:14px;text-align:center;border:1px solid #30363d;">
+            <p style="margin:0 0 4px;font-size:22px;">📓</p>
+            <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#a371f7;">notebooklm</p>
+            <p style="margin:0;font-size:12px;color:#8b949e;">문서 분석·연구</p>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+<!-- ========================================== -->
+<!-- 6. AGENT MAP INFOGRAPHIC                   -->
+<!-- ========================================== -->
+<tr>
+  <td style="background:#0f1923;padding:24px 36px;border-left:1px solid #21262d;border-right:1px solid #21262d;">
+    <h2 style="margin:0 0 16px;font-size:20px;color:#ffffff;font-weight:700;text-align:center;">
+      🤖 전문가 에이전트 지도
+    </h2>
+    <img src="https://raw.githubusercontent.com/Transconnectome/claude-code-coord/main/infographics/agent_map.png"
+         alt="Specialist Agents Map: Explore, Plan, deep-research, critic, backend/frontend-architect, python-expert, refactoring, quality/security/technical-writer, sci-method"
+         width="100%"
+         style="display:block;border-radius:12px;border:1px solid #21262d;max-width:608px;" />
+  </td>
+</tr>
+
+<!-- ========================================== -->
+<!-- 7. ANTI-SYCOPHANCY SECTION                 -->
+<!-- ========================================== -->
+<tr>
+  <td style="background:#1a0a2e;padding:28px 36px;border-left:1px solid #21262d;border-right:1px solid #21262d;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td width="60px" style="vertical-align:top;padding-right:16px;">
+          <div style="width:52px;height:52px;background:#e94560;border-radius:12px;text-align:center;line-height:52px;font-size:26px;">🛡️</div>
+        </td>
+        <td style="vertical-align:top;">
+          <h3 style="margin:0 0 8px;font-size:18px;color:#e94560;font-weight:700;">Chavis 아첨 방지 시스템 (Phase 5)</h3>
+          <p style="margin:0 0 12px;font-size:14px;color:#c9d1d9;line-height:1.6;">
+            Claude Code가 사용자에게 무조건 동의하는 <strong style="color:#e94560;">아첨(sycophancy)</strong>을 방지하는 5개의 Python hook이 내장되어 있습니다.
+          </p>
+          <table width="100%" cellpadding="3" cellspacing="0" border="0">
+            <tr>
+              <td style="font-size:13px;color:#a371f7;padding:4px 0;">
+                <code style="background:#1e1a2e;padding:2px 8px;border-radius:4px;">SessionStart</code>
+              </td>
+              <td style="font-size:13px;color:#c9d1d9;padding:4px 8px;">이전 아첨 레슨 자동 로드</td>
+            </tr>
+            <tr>
+              <td style="font-size:13px;color:#e94560;padding:4px 0;">
+                <code style="background:#1e1a2e;padding:2px 8px;border-radius:4px;">UserPromptSubmit</code>
+              </td>
+              <td style="font-size:13px;color:#c9d1d9;padding:4px 8px;">리스크 분류 + 전략적 챌린지 생성</td>
+            </tr>
+            <tr>
+              <td style="font-size:13px;color:#3fb950;padding:4px 0;">
+                <code style="background:#1e1a2e;padding:2px 8px;border-radius:4px;">Stop</code>
+              </td>
+              <td style="font-size:13px;color:#c9d1d9;padding:4px 8px;">응답 감사 + 세션 로그 영구 저장</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+<!-- ========================================== -->
+<!-- 8. HOOKS INFOGRAPHIC                       -->
+<!-- ========================================== -->
+<tr>
+  <td style="background:#0d1117;padding:20px 36px;border-left:1px solid #21262d;border-right:1px solid #21262d;">
+    <img src="https://raw.githubusercontent.com/Transconnectome/claude-code-coord/main/infographics/hooks_system.png"
+         alt="Chavis Anti-Sycophancy Hook System: 5 Python hooks across 4 lifecycle events"
+         width="100%"
+         style="display:block;border-radius:12px;border:1px solid #21262d;max-width:608px;" />
+  </td>
+</tr>
+
+<!-- ========================================== -->
+<!-- 9. QUICK START                             -->
+<!-- ========================================== -->
+<tr>
+  <td style="background:#0f2a1a;padding:28px 36px;border-left:1px solid #21262d;border-right:1px solid #21262d;">
+    <h2 style="margin:0 0 16px;font-size:20px;color:#3fb950;font-weight:700;">🚀 3분 설치법 (Quick Start)</h2>
+    <!-- Code block -->
+    <div style="background:#0d1117;border:1px solid #30363d;border-radius:10px;padding:20px;font-family:'Courier New',monospace;">
+      <p style="margin:0 0 4px;font-size:12px;color:#8b949e;"># Step 1 — 저장소 클론</p>
+      <p style="margin:0 0 12px;font-size:14px;color:#58a6ff;">git clone https://github.com/Transconnectome/claude-code-coord.git</p>
+      <p style="margin:0 0 4px;font-size:12px;color:#8b949e;"># Step 2 — Claude Code 프레임워크 파일 복사</p>
+      <p style="margin:0 0 12px;font-size:14px;color:#58a6ff;">cp -r .claude/ ~/.claude/</p>
+      <p style="margin:0 0 4px;font-size:12px;color:#8b949e;"># Step 3 — MCP 서버 설치 + 설정</p>
+      <p style="margin:0 0 12px;font-size:14px;color:#58a6ff;">bash scripts/setup.sh</p>
+      <p style="margin:0 0 4px;font-size:12px;color:#8b949e;"># Step 4 — 사용!</p>
+      <p style="margin:0;font-size:14px;color:#3fb950;">/coord "데이터베이스 스키마 마이그레이션 설계"</p>
+    </div>
+    <p style="margin:16px 0 0;font-size:13px;color:#8b949e;text-align:center;">
+      자세한 설치 가이드: <a href="https://github.com/Transconnectome/claude-code-coord/blob/main/docs/SETUP_GUIDE.md" style="color:#58a6ff;text-decoration:none;">docs/SETUP_GUIDE.md</a>
+    </p>
+  </td>
+</tr>
+
+<!-- ========================================== -->
+<!-- 10. GITHUB CTA BUTTON                      -->
+<!-- ========================================== -->
+<tr>
+  <td style="background:#0d1117;padding:32px 36px;text-align:center;border-left:1px solid #21262d;border-right:1px solid #21262d;">
+    <h2 style="margin:0 0 8px;font-size:20px;color:#ffffff;font-weight:700;">지금 바로 시작해보세요</h2>
+    <p style="margin:0 0 24px;font-size:14px;color:#8b949e;">오픈소스 · MIT 라이선스 · 즉시 사용 가능</p>
+    <a href="https://github.com/Transconnectome/claude-code-coord"
+       style="display:inline-block;background:#e94560;color:#ffffff;text-decoration:none;padding:16px 40px;border-radius:10px;font-size:17px;font-weight:700;letter-spacing:0.5px;">
+      🔗 GitHub 리포지터리 방문하기
+    </a>
+    <br><br>
+    <!-- Secondary links -->
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td align="center" style="padding:4px;">
+          <a href="https://github.com/Transconnectome/claude-code-coord/blob/main/docs/WORKFLOW.md" style="color:#58a6ff;font-size:13px;text-decoration:none;">📋 워크플로우 상세</a>
+          &nbsp;·&nbsp;
+          <a href="https://github.com/Transconnectome/claude-code-coord/blob/main/docs/AGENTS.md" style="color:#58a6ff;font-size:13px;text-decoration:none;">🤖 에이전트 가이드</a>
+          &nbsp;·&nbsp;
+          <a href="https://github.com/Transconnectome/claude-code-coord/blob/main/docs/HOOKS.md" style="color:#58a6ff;font-size:13px;text-decoration:none;">🛡️ Chavis 훅 시스템</a>
+          &nbsp;·&nbsp;
+          <a href="https://github.com/Transconnectome/claude-code-coord/blob/main/docs/MCP_SERVERS.md" style="color:#58a6ff;font-size:13px;text-decoration:none;">🛠️ MCP 서버 설정</a>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+<!-- ========================================== -->
+<!-- 11. SIGNATURE / FOOTER                     -->
+<!-- ========================================== -->
+<tr>
+  <td style="background:#16213e;border-radius:0 0 16px 16px;padding:28px 36px;border:1px solid #21262d;border-top:3px solid #e94560;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td>
+          <p style="margin:0 0 4px;font-size:15px;color:#c9d1d9;font-weight:600;">Chavis</p>
+          <p style="margin:0 0 2px;font-size:13px;color:#8b949e;">Claude Code Anti-Sycophancy System, Phase 5</p>
+          <p style="margin:0 0 16px;font-size:13px;color:#8b949e;">Transconnectome Lab · SNU Connectome</p>
+          <p style="margin:0;font-size:14px;font-style:italic;color:#e2c275;border-left:3px solid #e94560;padding-left:12px;">
+            "Agreement is not my goal. Accuracy is."
+          </p>
+        </td>
+      </tr>
+    </table>
+    <hr style="border:none;border-top:1px solid #21262d;margin:20px 0;">
+    <p style="margin:0;font-size:11px;color:#6e7681;text-align:center;line-height:1.6;">
+      이 이메일은 <a href="https://github.com/Transconnectome/claude-code-coord" style="color:#58a6ff;text-decoration:none;">claude-code-coord</a> 공개를 알리기 위해 발송되었습니다.<br>
+      문의: <a href="mailto:chavis2151@gmail.com" style="color:#58a6ff;text-decoration:none;">chavis2151@gmail.com</a>
+    </p>
+  </td>
+</tr>
+
+</table><!-- end content table -->
+
+</td></tr>
+</table><!-- end wrapper table -->
+
+</body>
+</html>

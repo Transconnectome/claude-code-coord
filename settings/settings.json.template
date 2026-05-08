@@ -1,0 +1,123 @@
+{
+  "_comment": "Claude Code settings template for /coord workflow. Copy to ~/.claude/settings.json and fill in {{PLACEHOLDER}} values.",
+  "env": {
+    "MAX_THINKING_TOKENS": "32000"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "python3 ~/.claude/hooks/chavis_session_init.py"
+      },
+      {
+        "type": "command",
+        "command": "python3 ~/.claude/hooks/simplicitas/hooks/simplicitas_session_init.py"
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "type": "command",
+        "command": "python3 ~/.claude/hooks/chavis_prompt_classify.py"
+      },
+      {
+        "type": "command",
+        "command": "python3 ~/.claude/hooks/chavis_strategic_challenge.py"
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "python3 ~/.claude/hooks/chavis_stop_audit.py"
+      },
+      {
+        "type": "command",
+        "command": "python3 ~/.claude/hooks/chavis_persistent_logger.py"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "python3 ~/.claude/hooks/simplicitas/hooks/simplicitas_track.py"
+      }
+    ]
+  },
+  "mcpServers": {
+    "_comment_sequential": "Sequential Thinking: clone from https://github.com/modelcontextprotocol/servers or use PATH_TO_SEQUENTIAL_SERVER",
+    "sequential-thinking": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["PATH_TO_SEQUENTIAL_SERVER/server.py"]
+    },
+    "_comment_memory": "Memory server: optional local persistence layer",
+    "memory": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["PATH_TO_MEMORY_SERVER/server.py"],
+      "env": {
+        "MEMORY_PATH": "PATH_TO_DATA_DIR/memory"
+      }
+    },
+    "_comment_tavily": "Tavily: get API key at https://app.tavily.com",
+    "tavily": {
+      "type": "stdio",
+      "command": "tavily-mcp",
+      "args": [],
+      "env": {
+        "TAVILY_API_KEY": "{{TAVILY_API_KEY}}"
+      }
+    },
+    "_comment_playwright": "Playwright: npm install -g mcp-server-playwright",
+    "playwright": {
+      "type": "stdio",
+      "command": "mcp-server-playwright",
+      "args": []
+    },
+    "_comment_context7": "Context7: npm install -g @upstash/context7-mcp",
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
+    "_comment_magic": "Magic (21st.dev UI components): npm install -g @21st-dev/magic",
+    "magic": {
+      "type": "stdio",
+      "command": "magic",
+      "args": [],
+      "env": {
+        "TWENTY_FIRST_API_KEY": "{{TWENTY_FIRST_API_KEY}}"
+      }
+    },
+    "_comment_morphllm": "Morph MCP (bulk code edits): npm install -g morph-mcp",
+    "morphllm": {
+      "type": "stdio",
+      "command": "morph-mcp",
+      "args": [],
+      "env": {
+        "MORPH_API_KEY": "{{MORPH_API_KEY}}"
+      }
+    },
+    "_comment_serena": "Serena (project memory + symbol ops): uvx auto-installs",
+    "serena": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server"
+      ]
+    },
+    "_comment_notebooklm": "NotebookLM (optional): pip install notebooklm-mcp-cli",
+    "notebooklm": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["-m", "notebooklm_tools.mcp.server"]
+    }
+  },
+  "model": "sonnet",
+  "effortLevel": "xhigh",
+  "language": "korean",
+  "verbose": true,
+  "enabledPlugins": [],
+  "_comment_plugins": "Optional plugins: telegram, vercel, document-skills, etc. Add plugin IDs here."
+}

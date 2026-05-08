@@ -1,0 +1,54 @@
+# Sensitive credentials — NEVER commit these
+.env
+credentials.json
+token.pickle
+*.pickle
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+
+# Testing artifacts
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Claude Code runtime files (not for distribution)
+/home/juke/.claude/projects/
+/tmp/chavis/
+
+# Email previews (local only)
+email/preview/*.html
+
+# Infographic drafts
+infographics/drafts/
+
+# Logs
+*.log
+audit_log.jsonl
+session_log.jsonl
