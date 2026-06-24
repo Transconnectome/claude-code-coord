@@ -31,11 +31,23 @@ HOOKS_DIR = REPO_ROOT / ".claude" / "hooks"
 
 
 def load_module(filename):
-    """Import a hook script as a standalone module, independent of sys.modules caching."""
+    """Import a hook script as a standalone module, independent of sys.modules caching.
+
+    Each hook calls sys.stdin/stdout.reconfigure(encoding="utf-8") at import
+    time. Test runners that capture output (e.g. pytest's default capture
+    mode) swap in objects without a .reconfigure() method, so swap in real
+    TextIOWrapper streams just for the duration of the import.
+    """
     path = HOOKS_DIR / filename
     spec = importlib.util.spec_from_file_location(path.stem, path)
     module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    old_stdin, old_stdout = sys.stdin, sys.stdout
+    sys.stdin = io.TextIOWrapper(io.BytesIO(), encoding="utf-8")
+    sys.stdout = io.TextIOWrapper(io.BytesIO(), encoding="utf-8")
+    try:
+        spec.loader.exec_module(module)
+    finally:
+        sys.stdin, sys.stdout = old_stdin, old_stdout
     return module
 
 
