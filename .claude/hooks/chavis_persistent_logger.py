@@ -16,20 +16,23 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+sys.stdin.reconfigure(encoding="utf-8")
+sys.stdout.reconfigure(encoding="utf-8")
+
 CHAVIS_DIR = Path("/tmp/chavis")
 SESSION_STATS = CHAVIS_DIR / "session_stats.json"
 CORRECTION_FLAG = CHAVIS_DIR / "correction_needed.json"
 STRATEGIC_FLAG = CHAVIS_DIR / "strategic_challenge_required.json"
 RISK_FILE = CHAVIS_DIR / "current_risk.json"
 
-MEMORY_DIR = Path.home() / ".claude/projects/-home-juke/memory/sycophancy"
+MEMORY_DIR = Path.home() / ".claude/memory/sycophancy"
 PERSISTENT_LOG = MEMORY_DIR / "session_log.jsonl"
 LESSONS_DIR = MEMORY_DIR / "lessons"
 
 
 def safe_load_json(path: Path) -> dict:
     try:
-        with open(path) as f:
+        with open(path, encoding="utf-8") as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         return {}
@@ -134,7 +137,7 @@ def main():
     # Append to persistent log
     try:
         PERSISTENT_LOG.parent.mkdir(parents=True, exist_ok=True)
-        with open(PERSISTENT_LOG, "a") as f:
+        with open(PERSISTENT_LOG, "a", encoding="utf-8") as f:
             f.write(json.dumps(entry, ensure_ascii=False) + "\n")
     except Exception:
         pass  # Never fail

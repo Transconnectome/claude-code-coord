@@ -18,6 +18,9 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+sys.stdin.reconfigure(encoding="utf-8")
+sys.stdout.reconfigure(encoding="utf-8")
+
 CHAVIS_DIR = Path("/tmp/chavis")
 RISK_FILE = CHAVIS_DIR / "current_risk.json"
 CORRECTION_FLAG = CHAVIS_DIR / "correction_needed.json"
@@ -66,7 +69,7 @@ FALSE_EQUIVALENCE_MARKERS = [
 
 def load_risk() -> dict:
     try:
-        with open(RISK_FILE) as f:
+        with open(RISK_FILE, encoding="utf-8") as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         return {"risk": 0.0}
@@ -93,7 +96,7 @@ def count_markers(text: str) -> dict:
 
 def update_session_stats(markers: dict, risk: float, sycophantic: bool):
     try:
-        with open(SESSION_STATS) as f:
+        with open(SESSION_STATS, encoding="utf-8") as f:
             stats = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         stats = {"total_responses": 0, "sycophantic_count": 0,
@@ -110,7 +113,7 @@ def update_session_stats(markers: dict, risk: float, sycophantic: bool):
     )
     stats["last_updated"] = datetime.now().isoformat()
 
-    with open(SESSION_STATS, "w") as f:
+    with open(SESSION_STATS, "w", encoding="utf-8") as f:
         json.dump(stats, f, ensure_ascii=False, indent=2)
 
 
@@ -181,7 +184,7 @@ def main():
         "reasons": reasons,
         "response_preview": response[:150],
     }
-    with open(AUDIT_LOG, "a") as f:
+    with open(AUDIT_LOG, "a", encoding="utf-8") as f:
         f.write(json.dumps(audit_entry, ensure_ascii=False) + "\n")
 
     # Set correction flag if sycophantic
@@ -191,7 +194,7 @@ def main():
             "reasons": reasons,
             "timestamp": datetime.now().isoformat(),
         }
-        with open(CORRECTION_FLAG, "w") as f:
+        with open(CORRECTION_FLAG, "w", encoding="utf-8") as f:
             json.dump(correction, f, ensure_ascii=False)
     else:
         # Clear flag

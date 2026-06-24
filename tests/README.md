@@ -14,6 +14,7 @@ From the repo root:
 bash tests/test_memory_scan.sh
 bash tests/test_settings_template.sh
 bash tests/test_verify_setup.sh
+python3 -m unittest tests.test_hooks -v
 
 # Or run all at once
 for t in tests/test_*.sh; do bash "$t"; done
@@ -28,6 +29,7 @@ for t in tests/test_*.sh; do bash "$t"; done
 | `test_memory_scan.sh` | `.claude/skills/coord/memory_scan.sh` input/output | 7 |
 | `test_settings_template.sh` | `settings/settings.json.template` validity + security | 6 |
 | `test_verify_setup.sh` | Post-installation file/executable checks | 8 |
+| `test_hooks.py` | `.claude/hooks/chavis_*.py` hook chain (risk classification, strategic challenge, stop audit, persistent logging) | 38 |
 
 ---
 

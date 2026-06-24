@@ -14,7 +14,10 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-MEMORY_DIR = Path.home() / ".claude/projects/-home-juke/memory/sycophancy"
+sys.stdin.reconfigure(encoding="utf-8")
+sys.stdout.reconfigure(encoding="utf-8")
+
+MEMORY_DIR = Path.home() / ".claude/memory/sycophancy"
 LESSONS_DIR = MEMORY_DIR / "lessons"
 SESSION_LOG = MEMORY_DIR / "session_log.jsonl"
 CALIBRATION_LOG = MEMORY_DIR / "calibration_log.jsonl"
@@ -57,7 +60,7 @@ def compute_session_stats() -> dict:
     sycophantic_responses = 0
 
     try:
-        with open(SESSION_LOG) as f:
+        with open(SESSION_LOG, encoding="utf-8") as f:
             for line in f:
                 try:
                     entry = json.loads(line)
@@ -86,7 +89,7 @@ def latest_calibration() -> dict | None:
     if not CALIBRATION_LOG.exists():
         return None
     try:
-        with open(CALIBRATION_LOG) as f:
+        with open(CALIBRATION_LOG, encoding="utf-8") as f:
             lines = f.readlines()
         if not lines:
             return None
@@ -115,7 +118,7 @@ def main():
             "sycophancy_rate": 0.0,
             "last_updated": datetime.now().isoformat(),
         }
-        with open(SESSION_STATS, "w") as f:
+        with open(SESSION_STATS, "w", encoding="utf-8") as f:
             json.dump(fresh_stats, f, ensure_ascii=False, indent=2)
     except Exception:
         pass

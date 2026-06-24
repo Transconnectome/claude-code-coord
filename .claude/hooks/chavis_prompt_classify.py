@@ -21,6 +21,9 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+sys.stdin.reconfigure(encoding="utf-8")
+sys.stdout.reconfigure(encoding="utf-8")
+
 CHAVIS_DIR = Path("/tmp/chavis")
 CHAVIS_DIR.mkdir(exist_ok=True)
 RISK_FILE = CHAVIS_DIR / "current_risk.json"
@@ -144,11 +147,11 @@ def main():
     result = classify_risk(str(prompt))
 
     # Write risk to file for Stop hook to read
-    with open(RISK_FILE, "w") as f:
+    with open(RISK_FILE, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False)
 
     # Append to audit log
-    with open(AUDIT_LOG, "a") as f:
+    with open(AUDIT_LOG, "a", encoding="utf-8") as f:
         f.write(json.dumps(result, ensure_ascii=False) + "\n")
 
     # High risk: output deliberation preamble

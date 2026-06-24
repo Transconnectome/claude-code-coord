@@ -19,11 +19,14 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+sys.stdin.reconfigure(encoding="utf-8")
+sys.stdout.reconfigure(encoding="utf-8")
+
 CHAVIS_DIR = Path("/tmp/chavis")
 CHAVIS_DIR.mkdir(exist_ok=True)
 RISK_FILE = CHAVIS_DIR / "current_risk.json"
 STRATEGIC_FLAG = CHAVIS_DIR / "strategic_challenge_required.json"
-PERSISTENT_LOG = Path.home() / ".claude/projects/-home-juke/memory/sycophancy/session_log.jsonl"
+PERSISTENT_LOG = Path.home() / ".claude/memory/sycophancy/session_log.jsonl"
 
 # --- Strategic decision pattern libraries (Q2: 모든 키워드, Caveat 1: weight ramp) ---
 
@@ -98,7 +101,7 @@ def detect_strategic_signals(prompt: str) -> dict:
 
 def load_risk() -> dict:
     try:
-        with open(RISK_FILE) as f:
+        with open(RISK_FILE, encoding="utf-8") as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         return {"risk": 0.0}
@@ -108,7 +111,7 @@ def append_persistent_log(entry: dict):
     """Append to persistent memory (Phase 5.2)."""
     try:
         PERSISTENT_LOG.parent.mkdir(parents=True, exist_ok=True)
-        with open(PERSISTENT_LOG, "a") as f:
+        with open(PERSISTENT_LOG, "a", encoding="utf-8") as f:
             f.write(json.dumps(entry, ensure_ascii=False) + "\n")
     except Exception:
         pass  # Never fail prompt processing
@@ -149,7 +152,7 @@ def main():
     }
 
     # Persist trigger state
-    with open(STRATEGIC_FLAG, "w") as f:
+    with open(STRATEGIC_FLAG, "w", encoding="utf-8") as f:
         json.dump(flag_data, f, ensure_ascii=False)
 
     # Persistent log entry (Phase 5.2 integration)
