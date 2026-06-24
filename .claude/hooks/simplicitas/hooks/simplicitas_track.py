@@ -52,7 +52,7 @@ def _write_audit(sid, tool_name, file_path, added, removed, composite, cc_max):
     audit = {"ts": datetime.now().isoformat(), "session": sid, "tool": tool_name,
              "file": file_path, "added": added, "removed": removed,
              "composite": composite, "cc_max": cc_max}
-    with AUDIT_LOG.open("a") as f:
+    with AUDIT_LOG.open("a", encoding="utf-8") as f:
         f.write(json.dumps(audit, ensure_ascii=False) + "\n")
 
 

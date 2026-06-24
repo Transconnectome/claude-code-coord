@@ -20,11 +20,13 @@ def main() -> int:
     except Exception:
         pass
     try:
-        prev = json.loads(SESSION_STATS.read_text())
+        prev = json.loads(SESSION_STATS.read_text(encoding="utf-8"))
         archive(prev)
     except (FileNotFoundError, json.JSONDecodeError):
         pass
-    SESSION_STATS.write_text(json.dumps(fresh_session(), ensure_ascii=False, indent=2))
+    SESSION_STATS.write_text(
+        json.dumps(fresh_session(), ensure_ascii=False, indent=2), encoding="utf-8"
+    )
     return 0
 
 
